@@ -1,0 +1,38 @@
+class Solution {
+    public boolean search(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+
+        while(left <= right){
+            int mid = (right - left) / 2 + left;
+            if(nums[mid] == target) return true;
+
+            //this part is used to process the same number
+            while(left <= mid && nums[left] == nums[mid]){
+                left++;
+            }
+            if(left > mid){
+                left = mid + 1;
+                continue;
+            }
+
+            if(nums[left] <= nums[mid]){
+                if(nums[left] <= target && target < nums[mid]){
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }else{
+                if(nums[mid] < target && target <= nums[right]){
+                    left = mid + 1;
+                }else{
+                    right = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+Result: result/81.png
+
+Reference: https://www.bilibili.com/video/BV1pp4y1W7eZ
