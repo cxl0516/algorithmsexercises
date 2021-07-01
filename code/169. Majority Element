@@ -1,0 +1,28 @@
+//方法一：
+//HashMap
+class Solution {
+    public int majorityElement(int[] nums) {
+        int result = 0;
+        int length = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for(Integer i : nums){
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+        for(Map.Entry<Integer, Integer> m : map.entrySet()){
+            if(m.getValue() > length / 2){
+                result = m.getKey();
+                break;
+            }
+        }
+        return result;
+    }
+}
+
+//方法二：
+//排序，下标为n/2向下取整的数一定是众数
+class Solution {
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length / 2];
+    }
+}
