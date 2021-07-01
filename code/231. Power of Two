@@ -1,0 +1,22 @@
+//方法一:
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        return n > 0 && (n & (n - 1)) == 0;
+    }
+}
+
+//方法二：
+//位运算
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        if(n <= 0) return false;
+        int number = 0;
+        for(int i = 0; i < 32; i++){
+            int bits = (n >> i) & 1;
+            if(bits == 1) 
+                number++;
+        }
+        return number == 1;
+
+    }
+}
