@@ -1,0 +1,13 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        // int result = 0;
+        // int temp = x ^ y;
+        // for(int i = 0; i < 32; i++){
+        //     int bits = (temp >> i) & 1;
+        //     if(bits == 1)
+        //         result++;
+        // }
+        // return result;
+        return Integer.bitCount(x ^ y);
+    }
+}
